@@ -1,0 +1,20 @@
+<h1> Houses</h1>
+<div class="buildings-wrapper row">
+  <% @buildings.each do |building| %>
+    <div class="building">
+      <div class="building-head">
+        <div class="name">
+          Suraj Apartment
+        </div>
+         <p class="descreption">
+        <%= building.description %>
+      </p>
+      </div>
+      <div class="image center-block">
+        <%= link_to (image_tag building.image.url(:medium), class:'img-responsive'), building_path(building) %>
+      </div>
+      
+    </div>
+  <% end %>
+</div>
+      

@@ -1,0 +1,19 @@
+<h1> Rooms</h1>
+<div class="buildings-wrapper row">
+  <% @rooms.each do |building| %>
+    <div class="building">
+      <div class="building-head">
+        <div class="name">
+         
+        </div>
+         <p class="descreption">
+       
+      </p>
+      </div>
+      <div class="image center-block">
+        <%= link_to (image_tag room.image.url(:medium), class:'img-responsive'), room_path(room) %>
+      </div>
+      
+    </div>
+  <% end %>
+</div>
