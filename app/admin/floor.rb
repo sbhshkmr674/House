@@ -14,7 +14,7 @@ index do
 	 id_column
      column :floor
 	  column :image do |event|
-    link_to(image_tag(event.image.url(:medium)), new_building_floor_room_path)
+    link_to(image_tag(event.image.url(:medium)))
   end
 	 actions
 	end

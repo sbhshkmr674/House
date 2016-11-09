@@ -1,18 +1,74 @@
-<h1> House</h1>
-<div class="buildings-wrapper row">
+<h1> Floor</h1>
+<!--<div class="buildings-wrapper row">
   
     <div class="building">
       <div class="building-head">
         <div class="name">
           Suraj Apartment
         </div>
-        <!-- <p class="description">
+         <p class="description">
         <%= @building.description %>
-      </p>-->
+      </p>
+      </div> 
+   </div>
+</div>-->
+
+<div class="buildings-wrapper row">
+ 
+    <div class="building">
+      <div class="building-head">
+        <div class="thumb-img"></div>
+        <div class="user-name">
+          <%= "#{@building.user.user_name} Apartment"%>
+           <%= @floor.floor_name%>
+        </div>
       </div>
       <div class="image center-block">
-        <%= link_to image_tag @building.image.url(:medium),new_building_floor_path %>
+           <%= link_to (image_tag @building.image.url(:medium), class:'img-responsive'), building_path(@building) %>
+           </div>
+      <div class="building-bottom">
+        <div class="description">
+          
+        </div>
+        <% if @building.floors %>
+          <% @building.floors.each do |floor| %>
+            <div class="floor">
+              <div class="user-name">
+                <%= floor.floor_name %>
+              </div>
+              <div class="floor-content">
+               <%= link_to (image_tag floor.image.url(:medium), class:'img-responsive'), building_path(@building) %>
+              </div>
+              </div>
+              <%end%> 
+          <% end %>
+          <br /> <br />
+        
+        <div class="building-form">
+          <%= form_for [@building, @building.floors.new] do |f| %>
+          <div class="form-group">
+            <div class="col-lg-3">
+              <%=f.label :floor_name%>
+            </div>
+            <div class="col-lg-3">
+            <%=f.text_field :floor_name%>
+            </div>
+          </div>
+          <div class="form-group">
+             <div class="col-lg-3">
+                <%= f.label :image %>
+             </div>
+             <div class="col-lg-9">
+                <%= f.file_field :image %>
+             </div>
+          </div>
+          <div class="form-group text-center">
+      <%= f.button :submit, class: 'btn btn-success' %>
+    </div>
+        <% end %>
+        </div>
       </div>
- 
-   </div>
+    </div>
+  
 </div>
+

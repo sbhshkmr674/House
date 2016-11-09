@@ -1,11 +1,16 @@
 class RoomsController < ApplicationController
    
     def index
-    	@rooms=@floors.rooms.all
+    	@rooms=floors.rooms.all
+    end
+
+    def new 
+    	@floor=Floor.find(params[:floor_id])
+    	@room=Room.new
     end
 	def create
 		@floor=Floor.find(params[:floor_id])
-		@room=@floor.rooms.builds(room_params)
+		@room=@floor.rooms.build(room_params)
 
 		if @room.save
 			flash[:success]="U created room"
@@ -18,10 +23,11 @@ class RoomsController < ApplicationController
 
 	def show
 		@room=@floor.rooms.find(params[:floor_id])
+	    
 	end
 
 	private
 	def room_params
-		params.require(:room).permit(:floor, :image)
+		params.require(:room).permit( :image)
 	end
 end
