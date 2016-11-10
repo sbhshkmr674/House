@@ -1,16 +1,1 @@
-<h1> Floor #{@floor.floor}</h1>
-<div class="buildings-wrapper row">
-  <% @floors.each do |floor| %>
-    <div class="building">
-      <div class="building-head">
-        <div class="name">
-          Suraj Apartment
-        </div>
-         <p class="descreption">
-        <%= link_to (floor.floor) %>
-      </p>
-      </div>
-      
-    </div>
-  <% end %>
-</div>
+<%= render @floors, building :@room%>

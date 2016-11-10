@@ -1,0 +1,29 @@
+<div class="buildings-wrapper">
+  <div class="building">
+    <div class="building-head">
+      <div class="thumb-img"></div>
+      <div class="user-name">
+        <%= floor.floor_name %>
+      </div>
+    </div>
+    <div class="image center-block">
+      <%= link_to (image_tag floor.image.url(:medium), class:'img-responsive'), floor_path(floor) %>
+    </div>
+      <div class="room-form">
+          <%= form_for [@floor, @floor.rooms.new] do |f| %>
+          
+          <div class="form-group">
+             <div class="col-lg-3">
+                <%= f.label :image %>
+             </div>
+             <div class="col-lg-9">
+                <%= f.file_field :image %>
+             </div>
+          </div>
+          <div class="form-group text-center">
+             <%= f.button :submit, class: 'btn btn-success' %>
+          </div>
+        <% end %>
+        </div>
+    </div>
+  </div>

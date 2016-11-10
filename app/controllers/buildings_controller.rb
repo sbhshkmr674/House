@@ -24,7 +24,16 @@ class BuildingsController < ApplicationController
 		@building=Building.find(params[:id])
 		@floor=Floor.new
 
-		
+	end
+
+	def destroy
+		@building=Building.find(params[:id])
+
+		if @building.destroy
+			flash[:success]= "Building successfully destroyed"
+		else
+			flash[:alert]='Something happing wrong'
+		end
 	end
 
 	def update

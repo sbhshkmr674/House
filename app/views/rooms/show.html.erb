@@ -1,17 +1,13 @@
-<h1> Room</h1>
-<div class="buildings-wrapper row">
-  
-    <div class="building">
-      <div class="building-head">
-        <div class="name">
-          Suraj Apartment
-        </div>
-        <!-- <p class="description">
-        <%= @building.description %>
-      </p>-->
-      </div>
-      <div class="image center-block">
-        <%= link_to image_tag @room.image.url(:medium) %>
-      </div>
-    </div>
+<div id="room">
+ <div class="user-name">
+    <%= building.floor_name if floor.building %>
+  </div>
+  <div class="comment-content">
+    <%= floor.floor_namet %>
+  <% if comment.user == current_user %>
+    <%= link_to raw('<span class="glyphicon glyphicon-remove btn-sm btn-primary"></span>'), post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
+      <!--<span>(class="glyphicon glyphicon-remove delete-comment")</span>-->
+  <% end %>
+
+</div>
 </div>

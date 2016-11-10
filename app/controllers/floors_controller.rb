@@ -10,7 +10,7 @@ class FloorsController < ApplicationController
        @floor=Floor.new
    end
 	def create
-		#@building = Building.find(params[:building_id])
+		@building = Building.find(params[:building_id])
 		 @floor=@building.floors.build(floor1_params)
 		
 		if @floor.save

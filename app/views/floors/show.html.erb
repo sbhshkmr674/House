@@ -1,17 +1,31 @@
-<h1> Floors</h1>
-<div class="buildings-wrapper row">
-  
-    <div class="building">
-      <div class="building-head">
-        <div class="name">
-          Suraj Apartment
+ <div class="buildings-wrapper row">
+ <div class="floor-bottom">
+ <% if @building.floors %>
+          <% @building.floors.each do |floor| %>
+            <div class="floor">
+              <div class="user-name">
+                <%= floor.floor_name %>
+              </div>
+              <div class="floor-content">
+               <%= link_to (image_tag floor.image.url(:medium), class:'img-responsive'), building_floor_path(@building.id, floor.id) %>
+              </div>
+              </div>
+              <%end%> 
+          <% end %>
+	</div>
+	<div class="form-wrapper">
+         <%= simple_form_for [@building, @room], html: { class: 'form-horizontal', multipart: true } do |f| %>
+          <div class="form-group">
+             <div class="col-lg-3">
+                <%= f.label :image %>
+             </div>
+             <div class="col-lg-9">
+                <%= f.file_field :image %>
+             </div>
+          </div>
+          <div class="form-group text-center">
+          <%= f.button :submit, class: 'btn btn-success' %>
         </div>
-        <!-- <p class="description">
-        <%= @building.description %>
-      </p>-->
-      </div>
-      <div class="image center-block">
-        <%= link_to image_tag @floor.image.url(:medium) %>
-      </div>
+      <% end %>
     </div>
 </div>

@@ -1,18 +1,4 @@
 <h1> Floor</h1>
-<!--<div class="buildings-wrapper row">
-  
-    <div class="building">
-      <div class="building-head">
-        <div class="name">
-          Suraj Apartment
-        </div>
-         <p class="description">
-        <%= @building.description %>
-      </p>
-      </div> 
-   </div>
-</div>-->
-
 <div class="buildings-wrapper row">
  
     <div class="building">
@@ -37,13 +23,22 @@
                 <%= floor.floor_name %>
               </div>
               <div class="floor-content">
-               <%= link_to (image_tag floor.image.url(:medium), class:'img-responsive'), building_path(@building) %>
+               <%= link_to (image_tag floor.image.url(:medium), class:'img-responsive'), building_floor_path(@building.id, floor.id) %>
               </div>
               </div>
               <%end%> 
           <% end %>
+          <% if @floor.rooms %>
+          <% @floor.rooms.each do |floor|%>
+            <div class="room">
+               <div class="user-name">
+                  <%= link_to (image_tag room.image.url(:medium), class:'img-responsive'),building_path(@building)%>
+                  </div>
+                  </div>
+                   <%end%>
+                   <% end %>
           <br /> <br />
-        
+       
         <div class="building-form">
           <%= form_for [@building, @building.floors.new] do |f| %>
           <div class="form-group">
@@ -71,4 +66,4 @@
     </div>
   
 </div>
-
+ 

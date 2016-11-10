@@ -2,12 +2,13 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :buildings do
-    resources :floors do
+    resources :floors 
       resources :rooms
     end
-  end
+  
   devise_for :users, :controllers => { registrations: 'registrations' } 
-  root 'buildings#index'  
+  root 'buildings#index' 
+ #get 'image', to: 'rooms#show', as: 'room'  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
